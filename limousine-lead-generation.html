@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Generation for Limousine Vendors — LaCleo Digital Realty</title>
+    <meta name="description" content="LaCleo Digital helps limousine vendors generate more leads with website development, local SEO, search ads, and reputation management. Fill your fleet today.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== Breadcrumb ===== */
+        .breadcrumb {
+            padding: 100px 0 0;
+            background: var(--navy);
+        }
+        .breadcrumb__inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--gray-400);
+        }
+        .breadcrumb__inner a {
+            color: var(--gray-400);
+            transition: var(--transition);
+        }
+        .breadcrumb__inner a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb__sep {
+            color: var(--gray-500);
+        }
+        .breadcrumb__current {
+            color: var(--gold);
+        }
+
+        /* ===== Page Hero ===== */
+        .page-hero {
+            position: relative;
+            background: var(--navy);
+            padding: 48px 0 100px;
+            overflow: hidden;
+        }
+        .page-hero__bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(201, 168, 76, 0.05) 0%, transparent 50%);
+        }
+        .page-hero__inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .page-hero__badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+        .page-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4.5vw, 50px);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .page-hero__subtitle {
+            font-size: 18px;
+            color: var(--gray-300);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+        .page-hero__ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Hero Visual - Image Gallery */
+        .page-hero__visual {
+            display: flex;
+            justify-content: center;
+        }
+        .hero-gallery {
+            width: 100%;
+            max-width: 500px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 200px 160px;
+            gap: 12px;
+        }
+        .hero-gallery__img {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .hero-gallery__img:first-child {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        .hero-gallery__img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .hero-gallery__img:hover img {
+            transform: scale(1.05);
+        }
+        .hero-gallery__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: linear-gradient(to top, rgba(12, 18, 34, 0.85), transparent);
+            color: var(--white);
+        }
+        .hero-gallery__overlay-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .hero-gallery__overlay-text {
+            font-size: 12px;
+            color: var(--gray-300);
+        }
+        .hero-gallery__badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 5px 12px;
+            background: rgba(201, 168, 76, 0.9);
+            color: var(--navy);
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== Stats Bar ===== */
+        .stats-bar {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+        .stats-bar__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .stats-bar__item {
+            padding: 8px 16px;
+        }
+        .stats-bar__number {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stats-bar__label {
+            font-size: 14px;
+            color: var(--gray-300);
+            line-height: 1.4;
+        }
+
+        /* ===== Service Detail Cards ===== */
+        .service-detail {
+            padding: 100px 0;
+        }
+        .service-detail:nth-child(odd) {
+            background: var(--white);
+        }
+        .service-detail:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .service-detail__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .service-detail__inner--reverse {
+            direction: rtl;
+        }
+        .service-detail__inner--reverse > * {
+            direction: ltr;
+        }
+        .service-detail__label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .service-detail__title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(26px, 3.5vw, 36px);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        .service-detail__desc {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+        .service-detail__features {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+        .service-detail__features li {
+            font-size: 15px;
+            color: var(--gray-600);
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .service-detail__features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .service-detail__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gold-dark);
+            transition: var(--transition);
+        }
+        .service-detail__cta:hover {
+            color: var(--gold);
+            gap: 12px;
+        }
+
+        /* Service Visual Card */
+        .service-visual {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        .service-visual__icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.05));
+            border-radius: 50%;
+            color: var(--gold);
+        }
+        .service-visual__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-visual__stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .service-visual__stat {
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+        }
+        .service-visual__stat-value {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--gold-dark);
+            margin-bottom: 4px;
+        }
+        .service-visual__stat-label {
+            font-size: 12px;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== Industries ===== */
+        .limo-types {
+            padding: 100px 0;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+        .limo-types::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+        }
+        .limo-types__grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .limo-type-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .limo-type-card:hover {
+            border-color: rgba(201, 168, 76, 0.3);
+            transform: translateY(-4px);
+        }
+        .limo-type-card__icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.05));
+            border-radius: 50%;
+            color: var(--gold);
+        }
+        .limo-type-card__title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .limo-type-card__desc {
+            font-size: 13px;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        /* ===== Responsive for page-specific ===== */
+        @media (max-width: 1024px) {
+            .stats-bar__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .limo-types__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .page-hero__inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .page-hero__subtitle {
+                max-width: 100%;
+            }
+            .page-hero__ctas {
+                justify-content: center;
+            }
+            .breadcrumb {
+                padding-top: 90px;
+            }
+            .service-detail__inner,
+            .service-detail__inner--reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                direction: ltr;
+            }
+            .stats-bar__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .limo-types__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .page-hero {
+                padding: 32px 0 60px;
+            }
+            .page-hero__ctas {
+                flex-direction: column;
+            }
+            .page-hero__ctas .btn {
+                width: 100%;
+            }
+            .stats-bar__grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-bar__number {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header__inner">
+            <a href="index.html" class="logo">
+                <span class="logo__icon">&#9670;</span>
+                <span class="logo__text">LaCleo<span class="logo__accent"> Digital Realty</span></span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html#services" class="nav__link">Services</a>
+                <a href="index.html#results" class="nav__link">Results</a>
+                <a href="index.html#process" class="nav__link">Process</a>
+                <a href="index.html#testimonials" class="nav__link">Testimonials</a>
+                <a href="index.html#blog" class="nav__link">Insights</a>
+                <a href="index.html#contact" class="nav__link">Contact</a>
+            </nav>
+            <div class="header__actions">
+                <a href="tel:+18005551234" class="header__phone">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    <span>(800) 555-1234</span>
+                </a>
+                <a href="index.html#contact" class="btn btn--primary header__cta">Free Strategy Call</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb__inner">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb__sep">/</span>
+                <a href="index.html#services">Services</a>
+                <span class="breadcrumb__sep">/</span>
+                <span class="breadcrumb__current">Lead Generation for Limousine Vendors</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero__bg"></div>
+        <div class="container page-hero__inner">
+            <div class="page-hero__content">
+                <div class="page-hero__badge">Limousine Industry Specialists</div>
+                <h1 class="page-hero__title">Lead Generation for <span class="text-gradient">Limousine Vendors</span></h1>
+                <p class="page-hero__subtitle">We help limousine and luxury transport companies fill their fleets with high-value bookings through targeted digital marketing, local SEO dominance, and reputation management.</p>
+                <div class="page-hero__ctas">
+                    <a href="index.html#contact" class="btn btn--primary btn--lg">Get Your Free Strategy Call</a>
+                    <a href="#services-overview" class="btn btn--outline-light btn--lg">Explore Our Services</a>
+                </div>
+            </div>
+            <div class="page-hero__visual">
+                <div class="hero-gallery">
+                    <div class="hero-gallery__img">
+                        <img src="https://images.pexels.com/photos/17246680/pexels-photo-17246680.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Luxury limousine interior">
+                        <div class="hero-gallery__overlay">
+                            <div class="hero-gallery__overlay-title">Premium Fleet Marketing</div>
+                            <div class="hero-gallery__overlay-text">Showcase your limousine fleet to high-intent clients</div>
+                        </div>
+                        <div class="hero-gallery__badge">Featured</div>
+                    </div>
+                    <div class="hero-gallery__img">
+                        <img src="https://images.pexels.com/photos/9151813/pexels-photo-9151813.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Black limousine interior">
+                        <div class="hero-gallery__overlay">
+                            <div class="hero-gallery__overlay-title">+520% Leads</div>
+                        </div>
+                    </div>
+                    <div class="hero-gallery__img">
+                        <img src="https://images.pexels.com/photos/1231643/pexels-photo-1231643.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Luxury limousine service">
+                        <div class="hero-gallery__overlay">
+                            <div class="hero-gallery__overlay-title">300+ Vendors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-bar__grid">
+                <div class="stats-bar__item">
+                    <div class="stats-bar__number"><span data-count="300">0</span>+</div>
+                    <div class="stats-bar__label">Limousine Businesses Served</div>
+                </div>
+                <div class="stats-bar__item">
+                    <div class="stats-bar__number"><span data-count="520">0</span>%</div>
+                    <div class="stats-bar__label">Average Lead Increase</div>
+                </div>
+                <div class="stats-bar__item">
+                    <div class="stats-bar__number"><span data-count="85">0</span>%</div>
+                    <div class="stats-bar__label">Fleet Utilization Rate</div>
+                </div>
+                <div class="stats-bar__item">
+                    <div class="stats-bar__number"><span data-count="4">0</span>.9&#9733;</div>
+                    <div class="stats-bar__label">Average Client Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services-overview">
+
+    <!-- Service 1: Website Services -->
+    <div class="service-detail">
+        <div class="container">
+            <div class="service-detail__inner">
+                <div class="service-detail__content">
+                    <span class="service-detail__label">Service 01</span>
+                    <h2 class="service-detail__title">Website Services for <span class="text-gradient">Limousine Companies</span></h2>
+                    <p class="service-detail__desc">Your website is the digital showroom for your limousine business. We design and develop high-converting, elegant websites that showcase your fleet, build trust, and turn visitors into booked rides around the clock.</p>
+                    <ul class="service-detail__features">
+                        <li>Custom fleet showcase pages with vehicle galleries and specs</li>
+                        <li>Online booking and quote request forms with instant confirmation</li>
+                        <li>Mobile-first responsive design for on-the-go customers</li>
+                        <li>Speed optimization for lightning-fast load times</li>
+                        <li>Integration with dispatch and CRM systems</li>
+                        <li>Service area pages for every city and region you serve</li>
+                    </ul>
+                    <a href="index.html#contact" class="service-detail__cta">Start Your Website Project &rarr;</a>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual__icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <div class="service-visual__title">Website Performance</div>
+                    <div class="service-visual__stats">
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">+280%</span>
+                            <span class="service-visual__stat-label">More Inquiries</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">1.8s</span>
+                            <span class="service-visual__stat-label">Load Time</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">94%</span>
+                            <span class="service-visual__stat-label">Mobile Score</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">24/7</span>
+                            <span class="service-visual__stat-label">Lead Capture</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service 2: Local SEO -->
+    <div class="service-detail">
+        <div class="container">
+            <div class="service-detail__inner service-detail__inner--reverse">
+                <div class="service-detail__content">
+                    <span class="service-detail__label">Service 02</span>
+                    <h2 class="service-detail__title">Local Search Engine <span class="text-gradient">Optimization</span></h2>
+                    <p class="service-detail__desc">When someone searches "limousine service near me" or "airport limo in [your city]," your business needs to appear first. Our local SEO strategies ensure you dominate Google's local results and Maps — exactly where your customers are looking.</p>
+                    <ul class="service-detail__features">
+                        <li>Google Business Profile optimization and management</li>
+                        <li>Local keyword research targeting high-intent limo searches</li>
+                        <li>Citation building across 100+ local directories</li>
+                        <li>On-page SEO for service area and city-specific landing pages</li>
+                        <li>Schema markup for limousine and transportation services</li>
+                        <li>Monthly SEO reporting with ranking and traffic insights</li>
+                    </ul>
+                    <a href="index.html#contact" class="service-detail__cta">Boost Your Local Rankings &rarr;</a>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual__icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    </div>
+                    <div class="service-visual__title">Local SEO Results</div>
+                    <div class="service-visual__stats">
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">#1</span>
+                            <span class="service-visual__stat-label">Map Pack</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">+320%</span>
+                            <span class="service-visual__stat-label">Organic Traffic</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">50+</span>
+                            <span class="service-visual__stat-label">Keywords Ranked</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">-45%</span>
+                            <span class="service-visual__stat-label">Cost Per Lead</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service 3: Local Search Ads -->
+    <div class="service-detail">
+        <div class="container">
+            <div class="service-detail__inner">
+                <div class="service-detail__content">
+                    <span class="service-detail__label">Service 03</span>
+                    <h2 class="service-detail__title">Local Search Ads for <span class="text-gradient">Instant Visibility</span></h2>
+                    <p class="service-detail__desc">Get your limousine business in front of high-intent customers the moment they search. Our targeted local search ad campaigns on Google put your services at the top of results for wedding limos, airport transfers, corporate events, and more.</p>
+                    <ul class="service-detail__features">
+                        <li>Google Local Services Ads with "Google Guaranteed" badge</li>
+                        <li>Hyper-targeted Google Ads campaigns for each service type</li>
+                        <li>Geo-fencing and radius targeting around airports, venues, and hotels</li>
+                        <li>Call-only ads for immediate phone bookings</li>
+                        <li>A/B testing ad copy to maximize click-through and conversions</li>
+                        <li>Full ROI tracking with cost-per-booking transparency</li>
+                    </ul>
+                    <a href="index.html#contact" class="service-detail__cta">Launch Your Ad Campaign &rarr;</a>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual__icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                    </div>
+                    <div class="service-visual__title">Ad Campaign Performance</div>
+                    <div class="service-visual__stats">
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">8.2%</span>
+                            <span class="service-visual__stat-label">Click Rate</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">$22</span>
+                            <span class="service-visual__stat-label">Avg. Cost/Lead</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">14x</span>
+                            <span class="service-visual__stat-label">ROAS</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">Top 3</span>
+                            <span class="service-visual__stat-label">Ad Position</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service 4: Reputation Management & Ratings -->
+    <div class="service-detail">
+        <div class="container">
+            <div class="service-detail__inner service-detail__inner--reverse">
+                <div class="service-detail__content">
+                    <span class="service-detail__label">Service 04</span>
+                    <h2 class="service-detail__title">Reputation Management <span class="text-gradient">& Ratings</span></h2>
+                    <p class="service-detail__desc">In the luxury transport industry, reputation is everything. A 4.8-star rating versus a 4.2 can mean the difference between a full calendar and empty vehicles. We help you build, manage, and protect a stellar online reputation that drives bookings.</p>
+                    <ul class="service-detail__features">
+                        <li>Automated review request campaigns after every ride</li>
+                        <li>Google, Yelp, and Facebook review monitoring and response</li>
+                        <li>Negative review mitigation with professional response strategies</li>
+                        <li>Review widget integration on your website for social proof</li>
+                        <li>Competitor reputation benchmarking and analysis</li>
+                        <li>Monthly reputation health reports and star rating tracking</li>
+                    </ul>
+                    <a href="index.html#contact" class="service-detail__cta">Protect Your Reputation &rarr;</a>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual__icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                    </div>
+                    <div class="service-visual__title">Reputation Metrics</div>
+                    <div class="service-visual__stats">
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">4.9&#9733;</span>
+                            <span class="service-visual__stat-label">Avg. Rating</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">+340%</span>
+                            <span class="service-visual__stat-label">More Reviews</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">&lt;2hr</span>
+                            <span class="service-visual__stat-label">Response Time</span>
+                        </div>
+                        <div class="service-visual__stat">
+                            <span class="service-visual__stat-value">92%</span>
+                            <span class="service-visual__stat-label">5-Star Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+    <!-- Limo Business Types We Serve -->
+    <section class="limo-types">
+        <div class="container">
+            <div class="section-header section-header--light">
+                <span class="section-label section-label--light">Who We Serve</span>
+                <h2 class="section-title section-title--light">Every Type of Limousine Business</h2>
+            </div>
+            <div class="limo-types__grid">
+                <div class="limo-type-card">
+                    <div class="limo-type-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3 class="limo-type-card__title">Wedding Limos</h3>
+                    <p class="limo-type-card__desc">Capture engaged couples searching for luxury wedding transportation in your area.</p>
+                </div>
+                <div class="limo-type-card">
+                    <div class="limo-type-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="limo-type-card__title">Corporate Transport</h3>
+                    <p class="limo-type-card__desc">Attract corporate accounts needing reliable executive transportation and event shuttles.</p>
+                </div>
+                <div class="limo-type-card">
+                    <div class="limo-type-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3 class="limo-type-card__title">Airport Transfers</h3>
+                    <p class="limo-type-card__desc">Dominate airport pickup and drop-off searches for consistent, high-volume bookings.</p>
+                </div>
+                <div class="limo-type-card">
+                    <div class="limo-type-card__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3 class="limo-type-card__title">Party & Events</h3>
+                    <p class="limo-type-card__desc">Reach customers planning proms, bachelor parties, wine tours, and special events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How We Work</span>
+                <h2 class="section-title">Your Path to a <span class="text-gradient">Full Fleet</span></h2>
+                <p class="section-subtitle">Our proven 4-step process is tailored specifically for limousine vendors looking to dominate their local market.</p>
+            </div>
+            <div class="process__steps">
+                <div class="process__step">
+                    <div class="process__step-number">01</div>
+                    <div class="process__step-content">
+                        <h3 class="process__step-title">Market & Fleet Analysis</h3>
+                        <p class="process__step-desc">We audit your digital presence, analyze your local competition, and identify the highest-value booking opportunities in your service areas.</p>
+                    </div>
+                </div>
+                <div class="process__step">
+                    <div class="process__step-number">02</div>
+                    <div class="process__step-content">
+                        <h3 class="process__step-title">Custom Lead Strategy</h3>
+                        <p class="process__step-desc">We build a tailored marketing plan combining website optimization, local SEO, paid ads, and reputation management — designed around your fleet size and goals.</p>
+                    </div>
+                </div>
+                <div class="process__step">
+                    <div class="process__step-number">03</div>
+                    <div class="process__step-content">
+                        <h3 class="process__step-title">Launch & Optimize</h3>
+                        <p class="process__step-desc">Our team executes across all channels, continuously testing and refining to maximize bookings while lowering your cost per lead.</p>
+                    </div>
+                </div>
+                <div class="process__step">
+                    <div class="process__step-number">04</div>
+                    <div class="process__step-content">
+                        <h3 class="process__step-title">Scale Your Fleet</h3>
+                        <p class="process__step-desc">As bookings grow, we help you expand into new service areas, add seasonal campaigns, and scale what's working to keep every vehicle on the road.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header section-header--light">
+                <span class="section-label section-label--light">Client Stories</span>
+                <h2 class="section-title section-title--light">What Limousine Owners Say</h2>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-card__text">"Before LaCleo, we relied entirely on word-of-mouth. Now our website and Google presence generate 30+ qualified leads per week. Our fleet has never been busier."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">RD</div>
+                        <div>
+                            <div class="testimonial-card__name">Robert DiNapoli</div>
+                            <div class="testimonial-card__role">Owner, Elite Class Limousines</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-card__text">"The local SEO work was incredible. We went from page 3 on Google to the #1 spot in the Map Pack for 'airport limo' in three cities. The phone hasn't stopped ringing."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">AK</div>
+                        <div>
+                            <div class="testimonial-card__name">Amanda Kessler</div>
+                            <div class="testimonial-card__role">GM, Prestige Town Cars</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-card__text">"Their reputation management system helped us go from 3.9 to 4.8 stars on Google in just 4 months. That alone doubled our wedding booking inquiries."</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">JM</div>
+                        <div>
+                            <div class="testimonial-card__name">James Moretti</div>
+                            <div class="testimonial-card__role">CEO, Luxe Ride Co.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container cta__inner">
+            <h2 class="cta__title">Ready to Fill Your Fleet?</h2>
+            <p class="cta__subtitle">Get a free digital marketing audit custom-built for your limousine business. We'll show you exactly where your leads are hiding and how to capture them.</p>
+            <div class="cta__actions">
+                <a href="index.html#contact" class="btn btn--primary btn--lg">Get In Touch With Us</a>
+                <a href="tel:+18005551234" class="btn btn--outline-light btn--lg">Call (800) 555-1234</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <a href="index.html" class="logo logo--footer">
+                        <span class="logo__icon">&#9670;</span>
+                        <span class="logo__text">LaCleo<span class="logo__accent"> Digital Realty</span></span>
+                    </a>
+                    <p class="footer__tagline">Digital marketing solutions built exclusively for real estate and luxury transport professionals. More leads. More bookings. More growth.</p>
+                </div>
+                <div class="footer__links">
+                    <div class="footer__col">
+                        <h4 class="footer__col-title">Services</h4>
+                        <a href="index.html#services" class="footer__link">Website Development</a>
+                        <a href="index.html#services" class="footer__link">SEO & Local Search</a>
+                        <a href="index.html#services" class="footer__link">Digital Advertising</a>
+                        <a href="index.html#services" class="footer__link">Email Marketing</a>
+                        <a href="index.html#services" class="footer__link">WhatsApp Marketing</a>
+                        <a href="#" class="footer__link">Limousine Lead Gen</a>
+                    </div>
+                    <div class="footer__col">
+                        <h4 class="footer__col-title">Company</h4>
+                        <a href="#" class="footer__link">About Us</a>
+                        <a href="index.html#results" class="footer__link">Case Studies</a>
+                        <a href="index.html#blog" class="footer__link">Blog & Insights</a>
+                        <a href="#" class="footer__link">Careers</a>
+                        <a href="index.html#contact" class="footer__link">Contact</a>
+                    </div>
+                    <div class="footer__col">
+                        <h4 class="footer__col-title">Resources</h4>
+                        <a href="#" class="footer__link">Free Marketing Audit</a>
+                        <a href="#" class="footer__link">ROI Calculator</a>
+                        <a href="#" class="footer__link">Industry Reports</a>
+                        <a href="#" class="footer__link">Webinars</a>
+                        <a href="#" class="footer__link">Partner Program</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2026 LaCleo Digital Realty. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
